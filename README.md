@@ -16,4 +16,4 @@ and Mathematical Observations" by
 Gaurav Sharma, Wencheng Wu and Edul N. Dalal, accepted 15 April 2004 
 and published by COLOR research and application Volume 30, Number 1, February 2005_
 
-to return the $\Delta-E_00^*$ difference between the object's color and the other object's color.
+to return the $\DeltaE_{00}^*$ difference between the object's color and the other object's color.
