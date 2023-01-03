@@ -1,5 +1,5 @@
 # CIEColorDiff
-##Colorimetric difference calculator
+## Colorimetric difference calculator
 
 Comparing colors scientifically is more difficult than one might expect, especially when
 taking human perception into account, which is interisting for works of art.
@@ -16,4 +16,4 @@ and Mathematical Observations" by
 Gaurav Sharma, Wencheng Wu and Edul N. Dalal, accepted 15 April 2004 
 and published by COLOR research and application Volume 30, Number 1, February 2005_
 
-to return the $\{Delta}E_{00}^*$ difference between the object's color and the other object's color.
+to return the $\Delta E_{00}^*$ difference between the object's color and the other object's color.
