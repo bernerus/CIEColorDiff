@@ -6,7 +6,7 @@ import PyPDF2 # To read PDFs
 from ciecolor import * # The colorimetry computation
 
 
-import xlsxwriter # To prodyce Excel
+import xlsxwriter # To produce Excel
 
 workbook = xlsxwriter.Workbook('colorimetric_results.xlsx')
 worksheet = workbook.add_worksheet()
@@ -93,7 +93,7 @@ def get_color_coords(pdf_file_object) -> Ciecolor:
 
 
 # Path where the calorimeter PDF's are stored
-dirname = "~/colorimetry/standards pdf/sample bed 2"
+dirname = "/Users/bernerus/priv/proj/Alex exjobb/alex colorimetry/standards pdf/sample bed 1"
 
 
 from pathlib import Path
@@ -123,10 +123,13 @@ worksheet.write('O3','b*')
 worksheet.write('P3','C*')
 worksheet.write('Q3','L*')
 worksheet.write('R3','∆E00')
+worksheet.write('S3','∆E76 mid')
+worksheet.write('T3','∆E76 after')
+
 
 row=4
 
-for b4 in sorted(pathlist):  # Gio through them sorted
+for b4 in sorted(pathlist):  # Go through them sorted
 
 	before = open(b4, "rb")
 	# print(b4)
@@ -165,14 +168,18 @@ for b4 in sorted(pathlist):  # Gio through them sorted
 	      str(after_color))
 
 	if mid_color:
-		mdiff = before_color.diff(mid_color)  # Compute diff
+		mdiff = before_color.diff(mid_color)  # Compute diff2000
+		mdiff76 = before_color.diff76(mid_color)  # Compute diff76
 		worksheet.write('L' + str(row), mdiff)
+		worksheet.write('S' + str(row), mdiff76)
 		print("Diff before to 308: %f" % mdiff)
 	else:
 		print("No 308 color")
 	if after_color:
 		adiff = before_color.diff(after_color) # Compute diff
+		adiff76 = before_color.diff76(after_color) # Compute diff
 		worksheet.write('R' + str(row), adiff)
+		worksheet.write('T' + str(row), adiff76)
 		print("Diff before to after: %f" % adiff)
 	else:
 		print("No after color")
