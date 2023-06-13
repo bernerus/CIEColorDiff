@@ -1,7 +1,7 @@
 from math import *
 
 # CIE color computation
-# Copyright Christer Bernérus 2022
+# Copyright Christer Bernérus 2022, 2023
 # License: GPL2
 
 class Ciecolor:
@@ -78,12 +78,12 @@ class Ciecolor:
 
 		# Eq 14
 		if c1prim * c2prim == 0:
-			hprimvec = 0
+			hprimvec = (h1prim + h2prim)
 		elif fabs(h1prim - h2prim) <= 180:
 			hprimvec = (h1prim + h2prim) / 2
 		elif fabs(h1prim - h2prim) > 180 and (h1prim + h2prim) < 360:
 			hprimvec = (h1prim + h2prim + 360) / 2
-		elif fabs(h1prim - h2prim) > pi and (h1prim + h2prim) >= 360:
+		elif fabs(h1prim - h2prim) > 180 and (h1prim + h2prim) >= 360:
 			hprimvec = (h1prim + h2prim - 360) / 2
 		else:
 			raise ValueError("Cannot find vector angle difference")
@@ -113,3 +113,10 @@ class Ciecolor:
 		deltaE0012 = sqrt((deltaLprim / (kl * sl)) ** 2 + (deltacprim / (kc * sc)) ** 2 + (deltaHprim / (kc * sh)) ** 2 + rt * (deltacprim / (kc * sc)) * (deltaHprim / (kh * sh)))
 
 		return deltaE0012
+
+	def diff76(self, other):
+
+		deltaE76 = sqrt((other.lstar-self.lstar)**2 + (other.astar-self.astar)**2 + (other.bstar-self.bstar)**2)
+		return deltaE76
+
+
