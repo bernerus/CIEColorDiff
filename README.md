@@ -2,7 +2,7 @@
 ## Colorimetric difference calculator
 
 Comparing colors scientifically is more difficult than one might expect, especially when
-taking human perception into account, which is interisting for works of art.
+taking human perception into account, which is interesting for works of art.
 
 This code was specifically created for my son's degree project for MSc in conservation.
 The code in main.py is very specific for that project assuming colorimetric measurements
